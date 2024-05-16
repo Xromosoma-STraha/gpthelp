@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Northwind" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-H9EIJ2I\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="PL23.Properties.Settings" SettingsPropertyName="NorthwindConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Competitions" Member="Competitions">
+    <Type Name="Competitions">
+      <Column Name="IdС" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Competitions_Results" Member="Results" ThisKey="IdС" OtherKey="IdC" Type="Results" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Results" Member="Results">
+    <Type Name="Results">
+      <Column Name="IdR" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fSq" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="sSq" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tSq" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="sB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="fDL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="sDL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tDL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Competitions_Results" Member="Competitions" ThisKey="IdC" OtherKey="IdС" Type="Competitions" IsForeignKey="true" />
+      <Association Name="Sportsman_Results" Member="Sportsman" ThisKey="IdS" OtherKey="IdS" Type="Sportsman" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sportsman" Member="Sportsman">
+    <Type Name="Sportsman">
+      <Column Name="IdS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Sportsman_Results" Member="Results" ThisKey="IdS" OtherKey="IdS" Type="Results" />
+    </Type>
+  </Table>
+</Database>
